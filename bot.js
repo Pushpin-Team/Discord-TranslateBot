@@ -65,4 +65,4 @@ Client.on("interactionCreate", async (INTERACTION) => {
     }
 });
 
-Client.login(`OTU4NjgzMzg5NDEyNjY3NDQy.YkQ5ew.6KddN3bUyeOo28fjx3kjhtLQNDI`);
+Client.login(procces.env.TOKEN);
