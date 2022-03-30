@@ -1,83 +1,116 @@
-module.exports = () => {
-    return [
+module.exports.config = [
+    [
         {
-            type: 'ACTION_ROW',
-            components: [
-                {
-                    type: 'BUTTON',
-                    label: 'English',
-                    style: 'PRIMARY',
-                    emoji: `<:us:958711217617256529>`,
-                    customId: 'language_en'
-                },
-                {
-                    type: 'BUTTON',
-                    label: 'Russian',
-                    style: 'PRIMARY',
-                    emoji: `<:ru:958711217575305266>`,
-                    customId: 'language_ru'
-                },
-                {
-                    type: 'BUTTON',
-                    label: 'Chinese',
-                    style: 'PRIMARY',
-                    emoji: `<:cn:958711217613054063>`,
-                    customId: 'language_zh-CN'
-                }
-            ]
+            code: 'en',
+            name: 'English',
+            emoji: '<:us:958711217617256529>'
         },
         {
-            type: 'ACTION_ROW',
-            components: [
-                {
-                    type: 'BUTTON',
-                    label: 'Germany',
-                    style: 'PRIMARY',
-                    emoji: `<:de:958742381149184000>`,
-                    customId: 'language_de'
-                },
-                {
-                    type: 'BUTTON',
-                    label: 'Hindi',
-                    style: 'PRIMARY',
-                    emoji: `<:hi:958742380817825903>`,
-                    customId: 'language_hi'
-                },
-                {
-                    type: 'BUTTON',
-                    label: 'Arabic',
-                    style: 'PRIMARY',
-                    emoji: `<:ar:958742380733952030>`,
-                    customId: 'language_ar'
-                }
-            ]
+            code: 'ru',
+            name: 'Russian',
+            emoji: '<:ru:958711217575305266>'
         },
         {
-            type: 'ACTION_ROW',
-            components: [
-                {
-                    type: 'BUTTON',
-                    label: ' ',
-                    style: 'DANGER',
-                    customId: 'pushpin_left',
-                    disabled: true
-                },
-                {
-                    type: 'BUTTON',
-                    label: 'Made By Pushpin',
-                    style: 'DANGER',
-                    emoji: `<:pushpin:958742436648206446>`,
-                    customId: 'pushpin_midlle',
-                    disabled: true
-                },
-                {
-                    type: 'BUTTON',
-                    label: ' ',
-                    style: 'DANGER',
-                    customId: 'pushpin_right',
-                    disabled: true
-                },
-            ]
+            code: 'zh-CN',
+            name: 'Chinese',
+            emoji: '<:cn:958711217613054063>'
+        },
+        {
+            code: 'uk',
+            name: 'Ukrainian',
+            emoji: '<:ua:958826228540919839>'
+        },
+        {
+            code: 'kk',
+            name: 'Kazakh',
+            emoji: '<:kz:958826228482179122>'
+        },
+    ],
+    [
+        {
+            code: 'de',
+            name: 'Germany',
+            emoji: '<:de:958742381149184000>'
+        },
+        {
+            code: 'hi',
+            name: 'Hindi',
+            emoji: '<:hi:958742380817825903>'
+        },
+        {
+            code: 'ar',
+            name: 'Arabic',
+            emoji: '<:ar:958742380733952030>'
+        },
+        {
+            code: 'fa',
+            name: 'Persian',
+            emoji: '<:ir:958826228100505600>'
+        },
+        {
+            code: 'pt',
+            name: 'Portuguese',
+            emoji: '<:pt:958827023831289876>'
+        },
+    ],
+    [
+        {
+            code: 'it',
+            name: 'Italian',
+            emoji: '<:it:958827023822913606>'
+        },
+        {
+            code: 'es',
+            name: 'Spanish',
+            emoji: '<:es:958826228146655332>'
+        },
+        {
+            code: 'fr',
+            name: 'French',
+            emoji: '<:fr:958826228155052113>'
         },
     ]
+]
+
+
+module.exports.init = (data) => {
+    const components = [];
+
+    for(let action_row of module.exports.config) {
+        components.push(
+            {
+                type: 'ACTION_ROW',
+                components: []
+            }
+        );
+        for(let component of action_row) {
+            components[components.length-1].components.push(
+                {
+                    type: 'BUTTON',
+                    label: component.name,
+                    customId: `result_${component.code}_${data}`,
+                    emoji: component.emoji,
+                    style: 'PRIMARY'
+                }
+            );
+        }
+    }
+
+    components[components.length-1].components.push(
+        {
+            type: 'BUTTON',
+            label: 'Made by Pushpin Team',
+            customId: 'pushpin',
+            style: 'DANGER',
+            emoji: '<:pushpin:958809397046411304>'
+        }
+    )
+
+    return components;
+}
+
+module.exports.getInfo = (code) => {
+    const action_row = module.exports.config.find(action_row => action_row.find(component => component.code == code));
+    const language_info = action_row.find(component => component.code == code);
+    return language_info;
 }
