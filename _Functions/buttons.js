@@ -73,7 +73,7 @@ module.exports.config = [
 ]
 
 
-module.exports.init = (data) => {
+module.exports.init = () => {
     const components = [];
 
     for(let action_row of module.exports.config) {
@@ -88,7 +88,7 @@ module.exports.init = (data) => {
                 {
                     type: 'BUTTON',
                     label: component.name,
-                    customId: `result_${component.code}_${data}`,
+                    customId: `result_${component.code}`,
                     emoji: component.emoji,
                     style: 'PRIMARY'
                 }
@@ -110,7 +110,9 @@ module.exports.init = (data) => {
 }
 
 module.exports.getInfo = (code) => {
-    const action_row = module.exports.config.find(action_row => action_row.find(component => component.code == code));
-    const language_info = action_row.find(component => component.code == code);
-    return language_info;
+    try {
+        const action_row = module.exports.config.find(action_row => action_row.find(component => component.code == code));
+        const language_info = action_row.find(component => component.code == code);
+        return language_info;
+    } catch {}
 }

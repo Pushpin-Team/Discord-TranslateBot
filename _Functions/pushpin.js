@@ -31,10 +31,29 @@ module.exports = (interaction) => {
                     },
                     {
                         type: 'BUTTON',
-                        label: 'Stop War',
-                        emoji: CMD.buttons.getInfo('uk').emoji,
-                        url: `https://www.supportukraine.co/`,
+                        label: 'Discord Server Bee Translator',
+                        emoji: '<:logo:961016535583953007>',
+                        url: `https://discord.gg/taJPbEJw2e`,
                         style: 'LINK'
+                    },
+                    {
+                        type: 'BUTTON',
+                        label: 'Discord Server Pushpin',
+                        emoji: '<:pushpin:958809397046411304>',
+                        url: `https://discord.gg/vDG8h94Xth`,
+                        style: 'LINK'
+                    },
+                ]
+            },
+            {
+                type: 'ACTION_ROW',
+                components: [
+                    {
+                        type: 'BUTTON',
+                        label: 'Back',
+                        emoji: '🔙',
+                        customId: 'translate',
+                        style: 'DANGER'
                     }
                 ]
             }
