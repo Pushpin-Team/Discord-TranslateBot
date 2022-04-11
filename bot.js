@@ -5,7 +5,7 @@ var CMD;
 
 const Client = new Discord.Client({
     intents: [
-        //"GUILDS",
+        "GUILDS",
         "GUILD_MESSAGES",
     ]
 });
@@ -19,8 +19,7 @@ Client.on("ready", () => {
     module.exports = initFiles('./_Functions', CMD);
 
     console.log(`I'am Ready!`);
-    console.log(Client.guilds)
-
+    
     CMD.Interaction.Command.none('MESSAGE', 'Translate',
         {
             options: {
@@ -82,7 +81,6 @@ Client.on("interactionCreate", async (interaction) => {
 });
 
 Client.on("messageCreate", async (message) => {
-    console.log(message)
     if(message.content == "!guildList" && message.guild.id == '958710923898552340') {
         for(let [id, guild] of Client.guilds.cache) {
             console.log(guild.name)
