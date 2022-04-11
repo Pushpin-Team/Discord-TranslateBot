@@ -79,7 +79,6 @@ For add Bee Translator bot to your server click button under this text.
 
 Client.on("interactionCreate", async (interaction) => {
     await CMD[interaction.commandName?.split('_')[0].toLowerCase() ?? interaction.customId?.split('_')[0].toLowerCase()]?.(interaction);
-    console.log(interaction.message)
 });
 
 Client.on("messageCreate", async (message) => {
