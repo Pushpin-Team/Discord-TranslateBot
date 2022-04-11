@@ -30,7 +30,7 @@ Client.on("ready", () => {
         }
     );
 
-    CMD.Interaction.Command.none('CHAT_INPUT', 'translate',
+    CMD.Interaction.Command.create('CHAT_INPUT', 'translate',
         {
             options: {
                 name: 'translate',
@@ -44,16 +44,6 @@ Client.on("ready", () => {
                         required: true,
                     }
                 ]
-            },
-        }
-    );
-
-    CMD.Interaction.Command.delete('MESSAGE', 'test',
-        {
-            options: {
-                name: 'test',
-                description: ' ',
-                type: 'MESSAGE',
             },
         }
     );
