@@ -1,5 +1,4 @@
-module.exports = async (interaction) => {
-    const CMD = require('../bot.js');
+module.exports = async (interaction) => { const CMD = require('../bot.js'); try {
     const id_target = interaction.message?.interaction?.id ?? interaction.id;
     const data = CMD.translateCache.get(id_target);
     const message = await interaction.channel.messages.fetch(data);
@@ -73,4 +72,6 @@ module.exports = async (interaction) => {
             ]
         });
     }   
-}
+} catch (error) {
+    CMD.Interaction.error(interaction, error, true);
+}}
