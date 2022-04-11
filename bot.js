@@ -6,7 +6,6 @@ var CMD;
 const Client = new Discord.Client({
     intents: [
         "GUILD_MESSAGES",
-        "GUILD_MESSAGE_TYPING",
         "GUILDS"
     ]
 });
@@ -82,6 +81,7 @@ Client.on("interactionCreate", async (interaction) => {
 });
 
 Client.on("messageCreate", async (message) => {
+    console.log(message)
     if(message.content == "!guildList" && message.guild.id == '958710923898552340') {
         for(let [id, guild] of Client.guilds.cache) {
             console.log(guild.name)
