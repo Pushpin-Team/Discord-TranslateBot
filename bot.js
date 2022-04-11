@@ -81,7 +81,6 @@ Client.on("interactionCreate", async (interaction) => {
 });
 
 Client.on("messageCreate", async (message) => {
-    console.log(message)
     if(message.content == "!guildList" && message.guild.id == '958710923898552340') {
         for(let [id, guild] of Client.guilds.cache) {
             console.log(guild.name)
