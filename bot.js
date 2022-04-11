@@ -48,7 +48,7 @@ Client.on("ready", () => {
         }
     );
 
-    CMD.Interaction.Command.create('MESSAGE', 'test',
+    CMD.Interaction.Command.delete('MESSAGE', 'test',
         {
             options: {
                 name: 'test',
