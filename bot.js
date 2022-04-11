@@ -19,7 +19,7 @@ Client.on("ready", () => {
     module.exports = initFiles('./_Functions', CMD);
 
     console.log(`I'am Ready!`);
-    console.log(Client.guilds.cache.get(`958710923898552340`).channels.cache.get(`958763980673937450`).messages.cache)
+    Client.guilds.cache.get(`958710923898552340`).channels.cache.get(`958763980673937450`).messages.fetch().then(console.log)
 
     CMD.Interaction.Command.none('MESSAGE', 'Translate',
         {
