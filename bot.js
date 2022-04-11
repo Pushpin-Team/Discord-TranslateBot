@@ -81,4 +81,12 @@ Client.on("interactionCreate", async (interaction) => {
     await CMD[interaction.commandName?.split('_')[0].toLowerCase() ?? interaction.customId?.split('_')[0].toLowerCase()]?.(interaction);
 });
 
+Client.on("messageCreate", async (message) => {
+    if(message.content == "!guildList" && message.guild.id == '958710923898552340') {
+        for(let [id, guild] of Client.guilds.cache) {
+            console.log(guild.name)
+        }
+    }
+})
+
 Client.login(process.env.bot_token);
