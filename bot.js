@@ -5,7 +5,7 @@ var CMD;
 
 const Client = new Discord.Client({
     intents: [
-        "CHANNEL_CREATE",
+        "GUILDS",
         "GUILD_MESSAGES",
     ]
 });
