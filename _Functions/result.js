@@ -6,7 +6,11 @@ module.exports = async (interaction) => { const CMD = require('../bot.js'); try 
     const message = await interaction.channel.messages.fetch(data);
     const language = interaction.customId.split('_')[1];
     const text = message.content.replaceAll(CMD.Discord.MessageMentions.USERS_PATTERN, (match) => {
-        let id = match.slice(3, -1);
+        let id = match.replaceAll('>', '');
+        id = id.replaceAll('<@!', '');
+        id = id.replaceAll('<@', '');
+        console.log(id)
+
         return `[@${CMD.Client.users.cache.get(id).tag}]`;
     });
     CMD.translateCache.delete(interaction.message.interaction.id);

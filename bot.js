@@ -7,6 +7,7 @@ const Client = new Discord.Client({
     intents: [
         "GUILDS",
         "GUILD_MESSAGES",
+        "DIRECT_MESSAGES"
     ]
 });
 
@@ -106,4 +107,4 @@ Client.on("messageCreate", async (message) => {
     }
 })
 
-Client.login(process.env.bot_token);
+Client.login(`OTU4NjgzMzg5NDEyNjY3NDQy.YkQ5ew.BnriGMFUNtRPgOJztv-BbOO8J-8`);
