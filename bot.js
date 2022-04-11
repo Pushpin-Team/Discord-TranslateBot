@@ -7,7 +7,6 @@ const Client = new Discord.Client({
     intents: [
         "GUILDS",
         "GUILD_MESSAGES",
-        "DIRECT_MESSAGES"
     ]
 });
 
@@ -45,6 +44,16 @@ Client.on("ready", () => {
                         required: true,
                     }
                 ]
+            },
+        }
+    );
+
+    CMD.Interaction.Command.create('MESSAGE', 'test',
+        {
+            options: {
+                name: 'test',
+                description: ' ',
+                type: 'MESSAGE',
             },
         }
     );
