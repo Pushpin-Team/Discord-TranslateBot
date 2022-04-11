@@ -30,7 +30,7 @@ Client.on("ready", () => {
         }
     );
 
-    CMD.Interaction.Command.create('CHAT_INPUT', 'translate',
+    CMD.Interaction.Command.none('CHAT_INPUT', 'translate',
         {
             options: {
                 name: 'translate',
