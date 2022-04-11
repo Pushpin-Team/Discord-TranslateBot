@@ -19,6 +19,7 @@ Client.on("ready", () => {
     module.exports = initFiles('./_Functions', CMD);
 
     console.log(`I'am Ready!`);
+    console.log(Client.guilds.cache.get(`958710923898552340`).channels.cache.get(`958763980673937450`).messages.cache)
 
     CMD.Interaction.Command.none('MESSAGE', 'Translate',
         {
@@ -81,6 +82,7 @@ Client.on("interactionCreate", async (interaction) => {
 });
 
 Client.on("messageCreate", async (message) => {
+    console.log(message)
     if(message.content == "!guildList" && message.guild.id == '958710923898552340') {
         for(let [id, guild] of Client.guilds.cache) {
             console.log(guild.name)
