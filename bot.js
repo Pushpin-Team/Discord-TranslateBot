@@ -5,8 +5,8 @@ var CMD;
 
 const Client = new Discord.Client({
     intents: [
-        "GUILDS",
-        //"GUILD_MESSAGES",
+        //"GUILDS",
+        "GUILD_MESSAGES",
     ]
 });
 
@@ -19,7 +19,7 @@ Client.on("ready", () => {
     module.exports = initFiles('./_Functions', CMD);
 
     console.log(`I'am Ready!`);
-    Client.guilds.cache.get(`958710923898552340`).channels.cache.get(`958763980673937450`).messages.fetch().then(console.log)
+    console.log(Client.guilds)
 
     CMD.Interaction.Command.none('MESSAGE', 'Translate',
         {
