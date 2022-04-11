@@ -35,7 +35,7 @@ Client.on("ready", () => {
             options: {
                 name: 'Translate',
                 description: 'Translate message',
-                type: 'MESSAGE',
+                type: 'CHAT_INPUT',
                 options: [
                     {
                         type: 'STRING',
