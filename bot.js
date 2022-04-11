@@ -6,7 +6,6 @@ var CMD;
 const Client = new Discord.Client({
     intents: [
         "GUILD_MESSAGES",
-        "GUILDS"
     ]
 });
 
