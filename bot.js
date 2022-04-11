@@ -36,16 +36,14 @@ Client.on("ready", () => {
                 name: 'Translate',
                 description: 'Translate message',
                 type: 'MESSAGE',
-                options: {
-                    options: [
-                        {
-                            type: 'STRING',
-                            name: 'id',
-                            description: 'Message id',
-                            required: true,
-                        }
-                    ]
-                }
+                options: [
+                    {
+                        type: 'STRING',
+                        name: 'id',
+                        description: 'Message id',
+                        required: true,
+                    }
+                ]
             },
         }
     );
