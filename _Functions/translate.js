@@ -4,7 +4,7 @@ module.exports = async (interaction) => {
     const id_target = interaction.message?.interaction?.id ?? interaction.id;
 
     if(!CMD.translateCache.has(id_target)) {
-        CMD.translateCache.set(id_target, interaction.targetMessage.id);
+        CMD.translateCache.set(id_target, interaction.targetMessage.id ?? interaction.options?.get("id"));
     }
 
     CMD.Interaction.reply(interaction, {

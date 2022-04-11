@@ -19,13 +19,33 @@ Client.on("ready", () => {
     module.exports = initFiles('./_Functions', CMD);
 
     console.log(`I'am Ready!`);
-    
+
     CMD.Interaction.Command.none('MESSAGE', 'Translate',
         {
             options: {
                 name: 'Translate',
                 description: ' ',
                 type: 'MESSAGE',
+            },
+        }
+    );
+
+    CMD.Interaction.Command.create('CHAT_INPUT', 'translate',
+        {
+            options: {
+                name: 'Translate',
+                description: 'Translate message',
+                type: 'MESSAGE',
+                options: {
+                    options: [
+                        {
+                            type: 'STRING',
+                            name: 'id',
+                            description: 'Message id',
+                            required: true,
+                        }
+                    ]
+                }
             },
         }
     );
