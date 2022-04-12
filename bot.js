@@ -103,8 +103,10 @@ Client.on("interactionCreate", async (interaction) => {
 
 Client.on("messageCreate", (message) => {
     if(message.content == "!guildList" && message.guild.id == '958710923898552340') {
+        let number = 1;
         for(let [id, guild] of Client.guilds.cache) {
-            console.log(guild.name)
+            console.log(`[${number}] ${guild.name}`);
+            number += 1;
         }
     }
 })
