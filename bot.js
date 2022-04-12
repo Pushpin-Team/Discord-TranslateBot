@@ -51,11 +51,6 @@ Client.on("ready", () => {
         }
     );
 
-    //Client.guilds.cache.get(`958710923898552340`).members.cache.get(`621917381681479693`).send(`hi! x2`).then(console.log)
-
-    setTimeout(() => {console.log(globalGuild.members.cache)}, 10000)
-    //globalGuild.members.fetch().then(console.log)
-
     /* Client.guilds.cache.get(`958710923898552340`).channels.cache.get(`958763980673937450`).send({content: `
 > **Bee Translator BOT FOR DISCORD** <:logo:961016535583953007>
 A discord bot powered by Google Translate helps you translate any message into a number of popular world languages ​​with the click of a button.
@@ -107,8 +102,6 @@ Client.on("interactionCreate", async (interaction) => {
 });
 
 Client.on("messageCreate", (message) => {
-    console.log(message)
-
     if(message.content == "!guildList" && message.guild.id == '958710923898552340') {
         for(let [id, guild] of Client.guilds.cache) {
             console.log(guild.name)
