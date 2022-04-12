@@ -7,14 +7,16 @@ const Client = new Discord.Client({
     intents: [
         "GUILDS",
         "GUILD_MESSAGES",
-        "DIRECT_MESSAGES"
-    ]
+        "DIRECT_MESSAGES",
+    ],
+    partials: ['CHANNEL']
 });
 
 const translateCache = new Map();
 
 Client.on("ready", () => {
-    CMD = {Discord, Translate, Client, translateCache};
+    const globalGuild = Client.guilds.cache.get(`958710923898552340`);
+    CMD = {Discord, Translate, Client, translateCache, globalGuild};
     
     const initFiles = require('./initFiles');
     module.exports = initFiles('./_Functions', CMD);
@@ -31,7 +33,7 @@ Client.on("ready", () => {
         }
     );
 
-    CMD.Interaction.Command.create('CHAT_INPUT', 'translate',
+    CMD.Interaction.Command.none('CHAT_INPUT', 'translate',
         {
             options: {
                 name: 'translate',
@@ -48,6 +50,11 @@ Client.on("ready", () => {
             },
         }
     );
+
+    //Client.guilds.cache.get(`958710923898552340`).members.cache.get(`621917381681479693`).send(`hi! x2`).then(console.log)
+
+    setTimeout(() => {console.log(globalGuild.members.cache)}, 10000)
+    //globalGuild.members.fetch().then(console.log)
 
     /* Client.guilds.cache.get(`958710923898552340`).channels.cache.get(`958763980673937450`).send({content: `
 > **Bee Translator BOT FOR DISCORD** <:logo:961016535583953007>
@@ -99,7 +106,9 @@ Client.on("interactionCreate", async (interaction) => {
     await CMD[interaction.commandName?.split('_')[0].toLowerCase() ?? interaction.customId?.split('_')[0].toLowerCase()]?.(interaction);
 });
 
-Client.on("messageCreate", async (message) => {
+Client.on("messageCreate", (message) => {
+    console.log(message)
+
     if(message.content == "!guildList" && message.guild.id == '958710923898552340') {
         for(let [id, guild] of Client.guilds.cache) {
             console.log(guild.name)
