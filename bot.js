@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 const Fs = require('fs');
 const Translate = require('@vitalets/google-translate-api');
+const config = require(`./config.js`);
 var CMD;
 
 const Client = new Discord.Client({
@@ -41,10 +42,30 @@ Client.on("ready", () => {
                 type: 'CHAT_INPUT',
                 options: [
                     {
-                        type: 'STRING',
-                        name: 'id',
-                        description: 'Message id',
-                        required: true,
+                        type: 'SUB_COMMAND',
+                        name: 'text',
+                        description: 'translate anything text',
+                        options: [
+                            {
+                                type: 'STRING',
+                                name: 'text',
+                                description: 'Text for translate',
+                                required: true,
+                            },
+                        ]
+                    },
+                    {   
+                        type: 'SUB_COMMAND',
+                        name: 'message',
+                        description: 'translate message',
+                        options: [
+                            {
+                                type: 'STRING',
+                                name: 'id',
+                                description: 'Message id',
+                                required: true,
+                            }
+                        ]
                     }
                 ]
             },
@@ -111,4 +132,4 @@ Client.on("messageCreate", (message) => {
     }
 })
 
-Client.login(process.env.bot_token);
+Client.login(process.env.bot_token ?? config.token);
