@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const Fs = require('fs');
 const Translate = require('@vitalets/google-translate-api');
-const config = require(`./config.js`);
+try {const config = require(`./config.js`)} catch {}
 var CMD;
 
 const Client = new Discord.Client({
