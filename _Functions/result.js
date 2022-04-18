@@ -2,11 +2,12 @@ module.exports = async (interaction) => { const CMD = require('../bot.js'); try 
     const id_target = interaction.message?.interaction?.id ?? interaction.id;
     const data = CMD.translateCache.get(id_target);
     const message = await interaction.channel.messages.fetch(data);
-    const language = interaction.customId.split('_')[1];
-    const text = message.content.replaceAll(CMD.Discord.MessageMentions.USERS_PATTERN, (match) => {
+    message = message.content ? message.content : data;
+    const text = message.replaceAll(CMD.Discord.MessageMentions.USERS_PATTERN, (match) => {
         let id = match.replaceAll(/(<@!|<@|>)/gm, '');
         return `[@${CMD.Client.users.cache.get(id).tag}]`;
     });
+    const language = interaction.customId.split('_')[1];
     CMD.translateCache.delete(interaction.message.interaction.id);
 
     var translate;
