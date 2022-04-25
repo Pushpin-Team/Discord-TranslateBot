@@ -63,5 +63,5 @@ module.exports = async (interaction) => { const CMD = require('../bot.js'); try 
         ]
     });   
 } catch (error) {
-    CMD.Interaction.error(interaction, `❌ **Error in translation**\n> ${error}`, true);
+    CMD.Interaction.error(interaction, new Error(`❌ **Error in translation**\n> ${error}`), true);
 }}
