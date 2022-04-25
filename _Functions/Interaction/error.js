@@ -4,7 +4,7 @@ module.exports = (interaction, error, ephemeral) => {
     console.log(error);
     if(!error.message) error.message = '';
 
-    CMD.Interaction.reply(interaction, {content: `Error: ${error.message}`, embeds: [], components: [], ephemeral: ephemeral});
+    CMD.Interaction.reply(interaction, {content: `⛔ ${error.message}`, embeds: [], components: [], ephemeral: ephemeral});
 
     return error;
 }
