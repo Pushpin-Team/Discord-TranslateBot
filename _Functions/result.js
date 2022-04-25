@@ -21,6 +21,7 @@ module.exports = async (interaction) => { const CMD = require('../bot.js'); try 
         translate = await CMD.Translate(text, {to: language});
     } catch(error) {
         console.log(error);
+        return;
     }
     const from_info = CMD.buttons.getInfo(translate.from.language.iso);
     const to_info = CMD.buttons.getInfo(language);
